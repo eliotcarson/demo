@@ -1,0 +1,19 @@
+// prisma/prisma.schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mongodb"
+  url          = "mongodb+srv://dorinel1:dorinel1@cluster0.ulxuz.mongodb.net/production"
+  relationMode = "prisma"
+}
+
+model Todo {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  isCompleted Boolean? @default(false)
+}
